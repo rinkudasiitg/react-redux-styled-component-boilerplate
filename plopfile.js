@@ -17,4 +17,21 @@ module.exports = function (plop) {
                 templateFile: 'plop-templates/component.test.js'
         }]
     });
+    plop.setGenerator('container', {
+        description: 'create class',
+        prompts: [{
+            type: 'input',
+            name: 'name',
+            message: 'class name'
+        }],
+        actions: [{
+            type: 'add',
+            path: 'src/containers/{{name}}/{{name}}.js',
+            templateFile: 'plop-templates/class.js'
+        }, {
+            type: 'add',
+            path: 'src/containers/{{name}}/{{name}}.test.js',
+            templateFile: 'plop-templates/class.test.js'
+        }]
+    });
 };
