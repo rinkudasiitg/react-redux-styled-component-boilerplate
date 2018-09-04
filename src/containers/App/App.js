@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import styled, {keyframes, ThemeProvider } from 'styled-components';
+
 import primaryTheme from '../../theme/primaryTheme';
+import { MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 
 import Button from '../../components/Button/Button';
 
@@ -38,6 +42,15 @@ const AppLogo = styled.img.attrs({
       height: 80px;
 `;
 
+const THEME = createMuiTheme({
+    typography: {
+        "fontFamily":"Lato",
+        "fontWeight": "400",
+        "fontSize": "16px",
+        "lineHeight": "1.7"
+    }
+});
+
 class App extends Component {
 
     state = {
@@ -46,18 +59,23 @@ class App extends Component {
 
   render() {
     return (
-        <ThemeProvider theme={this.state.theme}>
-            <AppWrapper>
-                <AppHeader>
-                    <AppLogo />
-                    <AppTitle>Welcome to React</AppTitle>
-                </AppHeader>
-                <AppIntro>
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </AppIntro>
-                <Button>primary button</Button>
-            </AppWrapper>
-        </ThemeProvider>
+        <CssBaseline>
+            <MuiThemeProvider theme={THEME}>
+                <ThemeProvider theme={this.state.theme}>
+                    <AppWrapper>
+                        <AppHeader>
+                            <AppLogo />
+                            <AppTitle>Welcome to React</AppTitle>
+                        </AppHeader>
+                        <AppIntro>
+                            To get started, edit <code>src/App.js</code> and save to reload.
+                        </AppIntro>
+                        <Button>primary button</Button>
+                    </AppWrapper>
+                </ThemeProvider>
+            </MuiThemeProvider>
+        </CssBaseline>
+        
 
     );
   }

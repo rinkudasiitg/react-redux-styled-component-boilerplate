@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import {injectGlobal} from 'styled-components'
+import 'typeface-lato';
 
 injectGlobal`
     *,

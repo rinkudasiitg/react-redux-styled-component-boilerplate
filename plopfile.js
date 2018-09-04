@@ -34,4 +34,25 @@ module.exports = function (plop) {
             templateFile: 'plop-templates/class.test.js'
         }]
     });
+    plop.setGenerator('styled component', {
+        description: 'create styled component',
+        prompts: [{
+            type: 'input',
+            name: 'name',
+            message: 'component name please'
+        }, {
+            type: 'input',
+            name: 'element',
+            message: 'element name please'
+        }],
+        actions: [{
+            type: 'add',
+            path: 'src/components/{{name}}/{{name}}.js',
+            templateFile: 'plop-templates/styled-component.js'
+        }, {
+            type: 'add',
+            path: 'src/components/{{name}}/{{name}}.test.js',
+            templateFile: 'plop-templates/component.test.js'
+        }]
+    });
 };
